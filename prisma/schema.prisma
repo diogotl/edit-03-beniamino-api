@@ -1,0 +1,30 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Category {
+    id    String @id @default(uuid())
+    title String
+    Dish  Dish[]
+
+    @@map("categories")
+}
+
+model Dish {
+    id           String   @id @default(uuid())
+    name         String
+    description  String
+    price        Int
+    category     Category @relation(fields: [categoryId], references: [id])
+    categoryId   String   @map("category_id")
+    is_available Boolean
+    created_at   DateTime @default(now())
+    updated_at   DateTime @default(now())
+
+    @@map("dishes")
+}
