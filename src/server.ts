@@ -8,6 +8,7 @@ import { getCategories } from "./http/get-categories";
 import { update } from "./http/update";
 import { patchAvailability } from "./http/patch-availability";
 import { getDish } from "./http/get-dish";
+import { env } from "process";
 
 const app = fastify();
 
@@ -27,5 +28,8 @@ app.patch("/dishes/:id", patchAvailability);
 app.delete("/dishes/:id", destroy);
 
 app.listen({
-    port: 3333,
-}).then(() => console.log(`Server is running on port 3333`));
+    host: "0.0.0.0",
+    port: Number(env.PORT),
+}).then(() => {
+    console.log(`HTTP Server Running! 🚀 ${env.PORT}`);
+});
