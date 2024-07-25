@@ -17,13 +17,13 @@ export async function get(request: FastifyRequest, reply: FastifyReply) {
         if (categoryTitle === "Entrada") {
             return `${url}/public/appetizer.jpg`;
         } else if (categoryTitle === "Prato Principal") {
-            return `${url}/public/entree.jpg`;
+            return `${url}/public/entree.png`;
         } else if (categoryTitle === "Sobremesa") {
             return `${url}/public/dessert.jpg`;
         } else if (categoryTitle === "Bebida") {
             return `${url}/public/drink.jpg`;
         } else {
-            return `${url}/public/pizza.jpg`;
+            return `${url}/public/pizza.png`;
         }
     }
 
