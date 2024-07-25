@@ -11,9 +11,36 @@ export async function get(request: FastifyRequest, reply: FastifyReply) {
         },
     });
 
-    dishes.forEach((dish) => {
-        dish.price = dish.price / 100;
+    function getImage(categoryTitle: string) {
+        const url = "https://beniamino-api.up.railway.app";
+
+        if (categoryTitle === "Entrada") {
+            return `${url}/public/images/carbonara.jpg`;
+        } else if (categoryTitle === "Plato fuerte") {
+            return `${url}/public/images/carbonara.jpg`;
+        } else if (categoryTitle === "Postre") {
+            return `${url}/public/images/carbonara.jpg`;
+        } else if (categoryTitle === "Bebida") {
+            return `${url}/public/images/carbonara.jpg`;
+        } else {
+            return `${url}/public/images/carbonara.jpg`;
+        }
+    }
+
+    const newDishes = dishes.map((dish) => {
+        return {
+            id: dish.id,
+            name: dish.name,
+            description: dish.description,
+            is_available: dish.is_available,
+            price: dish.price / 100,
+            category: {
+                id: dish.category.id,
+                title: dish.category.title,
+            },
+            avatar: getImage(dish.category.title),
+        };
     });
 
-    return reply.status(200).send(dishes);
+    return reply.status(200).send(newDishes);
 }
