@@ -15,15 +15,15 @@ export async function get(request: FastifyRequest, reply: FastifyReply) {
         const url = "https://beniamino-api.up.railway.app";
 
         if (categoryTitle === "Entrada") {
-            return `${url}/public/images/carbonara.jpg`;
-        } else if (categoryTitle === "Plato fuerte") {
-            return `${url}/public/images/carbonara.jpg`;
-        } else if (categoryTitle === "Postre") {
-            return `${url}/public/images/carbonara.jpg`;
+            return `${url}/public/appetizer.jpg`;
+        } else if (categoryTitle === "Prato Principal") {
+            return `${url}/public/entree.jpg`;
+        } else if (categoryTitle === "Sobremesa") {
+            return `${url}/public/dessert.jpg`;
         } else if (categoryTitle === "Bebida") {
-            return `${url}/public/images/carbonara.jpg`;
+            return `${url}/public/drink.jpg`;
         } else {
-            return `${url}/public/images/carbonara.jpg`;
+            return `${url}/public/pizza.jpg`;
         }
     }
 
